@@ -1,0 +1,25 @@
+#chart rect{
+  fill: #4aaeea;
+}
+
+#chart text{
+  fill: white;
+  text-anchor: end;
+  font-size: 10px;
+}
+
+.axis text {
+  font: 10px sans-serif;
+}
+
+.axis line,
+.axis path {
+  fill: none;
+  stroke: white;
+  shape-rendering: crispEdges;
+}
+body{
+  background: #1a1a1a;
+  color : #eaeaea;
+  padding : 10px;
+}
