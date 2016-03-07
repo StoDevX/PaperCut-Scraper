@@ -1,7 +1,7 @@
 # PaperCut Environmental Data Scraper
 
 ##### What is it?
-This script fetches data provided by [PaperCut](https://papercut.stolaf.edu), St. Olaf College's printing service, and scrapes each webpage containing the environmental impact per user based upon a list of usernames provided. The generated JSON file is then visualized within a D3 graphic to help visualize the collected data.
+This script fetches data provided by [PaperCut](https://papercut.stolaf.edu), St. Olaf College's printing service, and scrapes each webpage containing the environmental impact per user based upon a list of usernames provided. The generated JSON file is then visualized within a D3 graphic inside of a webpage.
 
 ##### Invariants:
 1. The python script is dependent upon a list of usernames that is _not provided_ on this repository. It is a CSV and lives within the `data` folder.
