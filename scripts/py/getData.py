@@ -34,7 +34,7 @@ def getPaperCutData( url, login ):
 
 	try:
 		# user html variables
-		soup 	  = BeautifulSoup(data, 'html.parser')
+		soup 	  = BeautifulSoup( data, 'html.parser' )
 		userStats = soup.find_all( "div", class_="user-stats-value" )
 		envStats  = soup.find_all( "div", class_="env-stats-text" )
 

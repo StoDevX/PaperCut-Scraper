@@ -1,16 +1,15 @@
 # PaperCut Environmental Data Scraper
 
 ##### What is it?
-This script fetches data provided by [PaperCut](https://papercut.stolaf.edu), St. Olaf College's printing service, and scrapes each webpage containing the environmental impact per user based upon a list of usernames provided. The generated JSON file is then visualized within a D3 graphic to help visualize the collected data.
+This script fetches data provided by [PaperCut](https://papercut.stolaf.edu), St. Olaf College's printing service, and scrapes each webpage containing the environmental impact per user based upon a list of usernames provided. The generated JSON file is then visualized within a D3 graphic inside of a webpage.
 
 ##### Invariants:
 1. The python script is dependent upon a list of usernames that is _not provided_ on this repository. It is a CSV and lives within the `data` folder.
      * The format consists of: username, a new line, zero or more usernames.
      * The file is at `data/campus.csv`. This file must exist.
-2. You must have a St. Olaf College login and have recently logged-in to [Papercut's web interface](https://papercut.stolaf.edu).
-3. You must have usernames within `data/campus.csv`.
-4. You must have Python 2.7 installed.
-5. You must have these libraries as well:
+2. You must have usernames within `data/campus.csv`.
+3. You must have Python 2.7 installed.
+4. You must have these libraries as well:
      * urlopen *and* BeautifulSoup
      * string, os, platform, time, json, re, unicodedata, HTMLParser, csv
 
@@ -22,5 +21,5 @@ This script fetches data provided by [PaperCut](https://papercut.stolaf.edu), St
 3. Open the `index.html` webpage in a local web browser to see the data visualized in a D3 graph.
 
 ##### Development
-* Want to contribute? Great! We'd love to see what you can do and would love to see your changes in the codebase.
+* Want to contribute? Great! We'd love to see what you can do. Show us what you got!
 * We make use of D3, JavaScript, HTML, CSS, and Python for familiar web development.
