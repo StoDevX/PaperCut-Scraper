@@ -3,7 +3,7 @@
 ##### What is it?
 This script fetches data provided by [PaperCut](https://papercut.stolaf.edu), St. Olaf College's printing service, and scrapes [each webpage](http://papercut.stolaf.edu/environment/dashboard/username) containing the environmental impact per user based upon a list of usernames provided. The generated JSON file is then visualized within a D3 graphic inside of a webpage.
 
-##### Invariants:
+##### Invariants
 1. The python script is dependent upon a list of usernames that is _not provided_ on this repository. It is a CSV and lives within the `data` folder.
      * The format consists of: username, a new line, zero or more usernames.
      * The file is at `data/campus.csv`. This file must exist.
@@ -13,7 +13,7 @@ This script fetches data provided by [PaperCut](https://papercut.stolaf.edu), St
      * urlopen *and* BeautifulSoup
      * string, os, platform, time, json, re, unicodedata, HTMLParser, csv
 
-##### Steps:
+##### Steps
 1. Satisfy the invariants above.
 2. Run the data-scraping script located at `scripts/py/getData.py`.
      * `python scripts/py/getData.py`
