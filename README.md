@@ -21,5 +21,5 @@ This script fetches data provided by [PaperCut](https://papercut.stolaf.edu), St
 3. Open the `index.html` webpage in a local web browser to see the data visualized in a D3 graph.
 
 ##### Development
-* Want to contribute? Great! We'd love to see what you can do and would love to see your changes in the codebase.
+* Want to contribute? Great! We'd love to see what you can do. Show us what you got!
 * We make use of D3, JavaScript, HTML, CSS, and Python for familiar web development.
