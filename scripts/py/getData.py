@@ -1,93 +1,71 @@
 #!/usr/bin/env python
 
-from urllib2 import urlopen
+from __future__ import print_function
 from bs4 import BeautifulSoup
-import string, os, platform, time, json, re, unicodedata, HTMLParser, csv
-
-# Papercut url
-url = "https://papercut.stolaf.edu/environment/dashboard/"
-# What our inFile is named
-inFile = "./data/campus.csv"
-# What our outFile will be named
-outFile = "./data/data.json"
+from urllib2 import urlopen
+import time
+import json
+import os
 
 
-# Our constructed JSON data
-responseData = []
-# Parser to clean up the string names
-h = HTMLParser.HTMLParser()
-# Time when we started the script
-start = time.time()
-
-def appendData( login, week, month ):
-	responseData.append( {'login':login,'week':week,'month':month} )
+# What our in_file is named
+in_file = "./data/campus.csv"
+# What our out_file will be named
+out_file = "./data/data.json"
 
 
 # Finds the cafeteria id and name
-def getPaperCutData( url, login ):
-	# Construct the full url
-	url2 = ''.join( [ url, str( login ) ] )
+def get_papercut_data(login):
+    # Construct the full url
+    full_url = "http://papercut.stolaf.edu/environment/dashboard/" + str(login)
 
-	# Receive the content of url and convert it to a string
-	response  = urlopen( url2 )
-	data 	  = str( response.read() )
+    # Receive the content of url and convert it to a string
+    response = urlopen(full_url)
+    data = str(response.read())
 
-	try:
-		# user html variables
-		soup 	  = BeautifulSoup( data, 'html.parser' )
-		userStats = soup.find_all( "div", class_="user-stats-value" )
-		envStats  = soup.find_all( "div", class_="env-stats-text" )
+    try:
+        # user html variables
+        soup = BeautifulSoup(data, 'html.parser')
+        user_stats = soup.find_all("div", class_="user-stats-value")
+        env_stats = soup.find_all("div", class_="env-stats-text")
 
-		# user personal use
-		week 	  = userStats[ 0 ].text
-		month 	  = userStats[ 1 ].text
-		costMonth = userStats[ 2 ].text
+        # user personal use
+        week = user_stats[0].text
+        month = user_stats[1].text
+        cost_month = user_stats[2].text
 
-		# Package off the user's data
-		appendData( login, week, month )
+        # Package off the user's data
+        return {'login': login, 'week': week, 'month': month}
 
-	except:
-		pass
+    except:
+        return None
 
-
-# Round numbers to a decimal point
-def num2str( num, precision ):
-	return "%0.*f" % ( precision, num )
-
-# Get the outFile's size
-def calculateFileSize():
-	fileSize = os.path.getsize( outFile )
-	fileSize = str( fileSize )
-	return fileSize
-
-# Read in a CSV
-def csv_reader( file_obj ):
-	reader = csv.reader( file_obj )
-	for row in reader:
-		login = ( " ".join( row ) )
-		getPaperCutData( url, login )
 
 # Loop through the list of students
-if __name__ == "__main__":
-	csv_path = inFile
-	with open( csv_path, "rb" ) as f_obj:
-		# Read a login from the CSV
-		csv_reader( f_obj )
+def main():
+    # Time when we started the script
+    start = time.time()
 
-# Write our output to a file
-with open( outFile, 'w' ) as outfile:
-	 # Output the data into a file
-	json.dump( responseData, outfile )
+    with open(in_file, "r") as input_data:
+        # Read all usernames from the data file
+        logins = input_data.read().splitlines()
 
-	# Detect Mac OS for script end sound
-	if platform.system() == "Darwin":
-		# Play a sound to alert that we have finished
-		os.system( 'afplay /System/Library/Sounds/Glass.aiff' )
+    # Make sure that every line has text on it
+    logins = [login for login in logins if login]
 
-	# Save the runtime
-	endTime = time.time() - start;
+    # Collect the papercut data for each username
+    response_data = [get_papercut_data(login) for login in logins]
 
-print ( 'File: '     + outFile )
-print ( 'Size: '     + calculateFileSize()   + ' bytes' )
-print ( 'This took ' + num2str( endTime, 2 ) + ' seconds\n' )
+    # Write our output to a file
+    with open(out_file, 'w') as outfile:
+        # Output the data into a file
+        json.dump(response_data, outfile)
 
+    # Calculate the time taken
+    end_time = time.time() - start
+
+    size = os.path.getsize(out_file)
+    print('wrote {} bytes to {} in {:.2f} seconds'.format(size, out_file, end_time))
+
+if __name__ == '__main__':
+    main()
