@@ -16,7 +16,6 @@ This script fetches data provided by [PaperCut](https://papercut.stolaf.edu), St
 1. Satisfy the invariants above.
 2. Run the data-scraping script located at `scripts/py/getData.py`.
      * `python2 scripts/py/getData.py`
-     * *Have ~11 minutes worth of patience...*
      * *The data file is located at `data/data.JSON` in the case you would like to inspect it when it finishes.*
 3. Open the `index.html` webpage in a local web browser to see the data visualized in a D3 graph.
      * Unfortunately, you must start a web server to be able to see the data.
