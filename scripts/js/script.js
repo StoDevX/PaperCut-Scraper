@@ -24,6 +24,12 @@ var yAxis = d3.svg.axis()
 
 
 d3.json("data/data.json", function(error, data){
+  //Remove null data (in case some incorrect usernames were entered)
+  var newData = []
+  for(var i=0;i<data.length;i++){
+    if(data[i] != null) newData.push(data[i]);
+  }
+  data = newData;
   // Sort the data
   data = data.sort( function(a,b) {return b.month-a.month;});
 
