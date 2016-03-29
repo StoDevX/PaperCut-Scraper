@@ -40,7 +40,7 @@ d3.json("data/data.json", function(data){
         .style('background', 'white')
         .style('opacity', 0)
     
-    var myChart = d3.select('#chart1').append('svg')
+    var myChart = d3.select('#chart').append('svg')
         .style('background', '#eee8d5')
         .attr('width', width + margin.left + margin.right)
         .attr('height', height + margin.top + margin.bottom)
@@ -66,7 +66,7 @@ d3.json("data/data.json", function(data){
             tooltip.transition()
 		.style('opacity', .9)
 
-            tooltip.html(d.login+ ": month: " + d.month+ ", week: " + d.week)
+            tooltip.html(d.login+ "-- This month: " + d.month+ " pages." + " This week: " + d.week+ " pages.")
 		.style('left', (d3.event.pageX - 65) + 'px')
 		.style('top',  (d3.event.pageY - 60) + 'px')
 
@@ -140,3 +140,20 @@ d3.json("data/data.json", function(data){
     
     
 });
+
+function login_search() {
+    var search = $('#search_box').val();
+    
+    $.each(newData, function(index) {
+		//console.log(newData[index].login);
+		if (newData[index].login == search) {
+		    //console.log(newData[index].month);
+		    $('#search_output').html("<h2>Username: " + newData[index].login + "<br> Month: " + newData[index].month + "<br> Week: " + newData[index].week + "</h2>");
+
+		    $('#chart').animate({
+			scrollLeft: document.getElementById("chart").childNodes[0].childNodes[0].childNodes[index].getBoundingClientRect().left+50
+		    }, 1000);
+		    
+		}
+	    });
+}

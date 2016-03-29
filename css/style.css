@@ -11,9 +11,18 @@ h2 {
     color : #aeaeae;
 }
 
-#chart1 {
+#chart {
     overflow-x: auto;
     border: 2px solid #B58929;
+    position: relative;
+}
+
+#arrow {
+    position: absolute; /*newly added*/
+    z-index: 3;
+    font-size: 40px;
+    color: red;
+    left: 50px;
 }
 
 .axis line,
@@ -22,3 +31,5 @@ h2 {
     stroke: white;
     shape-rendering: crispEdges;
 }
+
+
