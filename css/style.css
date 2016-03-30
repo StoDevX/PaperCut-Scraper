@@ -9,20 +9,21 @@ h1 {
 
 h2 {
     color : #aeaeae;
+    font-size: 40px;
 }
 
-#chart {
+#chartContainer {
     overflow-x: auto;
     border: 2px solid #B58929;
     position: relative;
 }
 
-#arrow {
-    position: absolute; /*newly added*/
-    z-index: 3;
-    font-size: 40px;
-    color: red;
-    left: 50px;
+input {
+    font-size: 20px;
+}
+
+button {
+    font-size: 20px;
 }
 
 .axis line,

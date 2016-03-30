@@ -83,7 +83,7 @@ d3.json("data/data.json", function(data){
 		.style('fill', tempColor)
 	})
 
-     var vGuideScale = d3.scale.linear()
+    var vGuideScale = d3.scale.linear()
         .domain([0, max_value])
         .range([height, 0])
 
@@ -93,12 +93,12 @@ d3.json("data/data.json", function(data){
         .ticks(10)
 
     var vGuide = d3.select('svg').append('g')
-        vAxis(vGuide)
-        vGuide.attr('transform', 'translate(' + margin.left + ', ' + margin.top + ')')
-        vGuide.selectAll('path')
-            .style({ fill: 'none', stroke: "#000"})
-        vGuide.selectAll('line')
-            .style({ stroke: "#000"})
+    vAxis(vGuide)
+    vGuide.attr('transform', 'translate(' + margin.left + ', ' + margin.top + ')')
+    vGuide.selectAll('path')
+        .style({ fill: 'none', stroke: "#000"})
+    vGuide.selectAll('line')
+        .style({ stroke: "#000"})
 
     var hAxis = d3.svg.axis()
         .scale(xScale)
@@ -106,38 +106,36 @@ d3.json("data/data.json", function(data){
         .tickFormat('')
 
     var hGuide = d3.select('svg').append('g')
-        hAxis(hGuide)
-        hGuide.attr('transform', 'translate(' + margin.left + ', ' + (height + margin.top) + ')')
-        hGuide.selectAll('path')
-            .style({ fill: 'none', stroke: "#000"})
-        hGuide.selectAll('line')
-            .style({ stroke: "#000"})
- 
+    hAxis(hGuide)
+    hGuide.attr('transform', 'translate(' + margin.left + ', ' + (height + margin.top) + ')')
+    hGuide.selectAll('path')
+        .style({ fill: 'none', stroke: "#000"})
+    hGuide.selectAll('line')
+        .style({ stroke: "#000"})
+    
 
 
     /*var myChart = d3.select('#chart2').append('svg')
-        .attr('width', width)
-        .attr('height', height)
-        .style('background', '#C9D7D6')
-        .selectAll('rect').data(max10)
-        .enter().append('rect')
-        .style('fill', '#C61C6F')
-        .attr('width', xScale.rangeBand())
-        .attr('height', function(d) {
-	    return yScale(d);
-	})
-        .attr('x', function(d,i) {
-	    return xScale(i);
-	})
-        .attr('y', function(d) {
-	    return height - yScale(d);
-	})
-        .on('mouseover', function(d) {
-	    d3.select(this)
-	        .style('opacity', .5)
-	})*/
-
-    
+      .attr('width', width)
+      .attr('height', height)
+      .style('background', '#C9D7D6')
+      .selectAll('rect').data(max10)
+      .enter().append('rect')
+      .style('fill', '#C61C6F')
+      .attr('width', xScale.rangeBand())
+      .attr('height', function(d) {
+      return yScale(d);
+      })
+      .attr('x', function(d,i) {
+      return xScale(i);
+      })
+      .attr('y', function(d) {
+      return height - yScale(d);
+      })
+      .on('mouseover', function(d) {
+      d3.select(this)
+      .style('opacity', .5)
+      })*/
     
 });
 
@@ -145,15 +143,21 @@ function login_search() {
     var search = $('#search_box').val();
     
     $.each(newData, function(index) {
-		//console.log(newData[index].login);
-		if (newData[index].login == search) {
-		    //console.log(newData[index].month);
-		    $('#search_output').html("<h2>Username: " + newData[index].login + "<br> Month: " + newData[index].month + "<br> Week: " + newData[index].week + "</h2>");
+	//console.log(newData[index].login);
+	if (newData[index].login == search) {
+	    var bar =  document.getElementById("chart").childNodes[0].childNodes[0].childNodes[index]; // the selected 
 
-		    $('#chart').animate({
-			scrollLeft: document.getElementById("chart").childNodes[0].childNodes[0].childNodes[index].getBoundingClientRect().left+50
-		    }, 1000);
-		    
-		}
-	    });
+	    //console.log(newData[index].month);
+	    $('#search_output').html("<h2>Username: " + newData[index].login + "<br> Month: " + newData[index].month + "<br> Week: " + newData[index].week + "</h2>");
+
+	    $('#chartContainer').animate({
+		scrollLeft:bar.getBoundingClientRect().left-350
+	    }, 1000);
+
+	    $("#arrow").css("left", (bar.getBoundingClientRect().width*index+40));
+
+	    
+	}
+
+    });
 }

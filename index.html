@@ -1,27 +1,33 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <title>PaperCut Statistics By User</title>
+  <head>
+    <meta charset="UTF-8">
+    <title>PaperCut Statistics By User</title>
 
-</head>
-<body>
+  </head>
+  <body>
     <script>
-        window.onload = function () {
-            window.scrollBy(0, 2000);
-        }
+      window.onload = function () {
+      window.scrollBy(0, 2000);
+      }
     </script>
     <script src='http://codepen.io/assets/libs/fullpage/jquery.js'></script>
     <script src='http://d3js.org/d3.v3.min.js'></script>
-     <link rel="stylesheet" href="css/style.css">
+    <script src="scripts/js/script.js"></script>
+    <link rel="stylesheet" href="css/style.css">
     <h1>PaperCut Statistics By User</h1>
-    <div id="chart"></div>
-    <input id="search_box"type="text">
+    <div id="chartContainer">
+      <div id="arrow" style="    position: absolute;
+    z-index: 3;
+    font-size: 45px;
+    color: red;
+    left: -30px;
+    top: 360px;"><span>&#94;</span></div>
+      <div id="chart"></div>
+    </div>
+    <input id="search_box"type="text" placeholder="search for a username">
     <button type="button" onClick="login_search()">Search</button>
     <div id="search_output"><h2>Username:<br>Month:<br>Week:<br></h2></div>
-    
-   
-    <script src="scripts/js/script.js"></script>
     
 </div>
 
