@@ -1,25 +1,36 @@
-#chart rect{
-  fill: #4aaeea;
+body{
+    background: #002b36;
+    padding : 10px;
 }
 
-#chart text{
-  fill: white;
-  text-anchor: end;
-  font-size: 10px;
+h1 {
+    color: #eaeaea;
 }
 
-.axis text {
-  font: 10px sans-serif;
+h2 {
+    color : #aeaeae;
+    font-size: 40px;
+}
+
+#chartContainer {
+    overflow-x: auto;
+    border: 2px solid #B58929;
+    position: relative;
+}
+
+input {
+    font-size: 20px;
+}
+
+button {
+    font-size: 20px;
 }
 
 .axis line,
 .axis path {
-  fill: none;
-  stroke: white;
-  shape-rendering: crispEdges;
+    fill: none;
+    stroke: white;
+    shape-rendering: crispEdges;
 }
-body{
-  background: #1a1a1a;
-  color : #eaeaea;
-  padding : 10px;
-}
+
+
